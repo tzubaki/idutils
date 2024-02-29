@@ -697,6 +697,15 @@ def is_viaf(val):
     else:
         return False
 
+def is_email(val):
+    # Regular expression for basic email validation
+    pattern = r'^[\w\.-]+@[\w\.-]+\.\w+$'
+    
+    # Using re.match() to check if the provided email matches the pattern
+    if re.match(pattern, val):
+        return True
+    else:
+        return False
 
 PID_SCHEMES = [
     ("doi", is_doi),
@@ -714,6 +723,7 @@ PID_SCHEMES = [
     ("issn", is_issn),
     ("orcid", is_orcid),
     ("isni", is_isni),
+    ("email", is_email),
     ("ean13", is_ean13),
     ("ean8", is_ean8),
     ("istc", is_istc),
